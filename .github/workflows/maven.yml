@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # Corregido: indentado y con 'uses'
+        uses: actions/checkout@v4
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
@@ -23,6 +23,8 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean package
+        working-directory: ./ci-cd-demo  # <-- Aquí le dices dónde está el pom.xml
 
       - name: Run Tests
         run: mvn test
+        working-directory: ./ci-cd-demo  # <-- Igual aquí
